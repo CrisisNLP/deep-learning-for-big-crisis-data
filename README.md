@@ -1,1 +1,1 @@
-# deep-learning-for-big-crisis-data
+# Deep Learning for Big Crisis Data
