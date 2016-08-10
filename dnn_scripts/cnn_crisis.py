@@ -257,44 +257,28 @@ if __name__ == '__main__':
 	y_pred = model.predict_classes(X_test)
 	y_test = np.array(y_test)
 
-	print(y_test[0:20])
-	print(y_pred[0:20])
-
 	acc2 = metrics.accuracy_score(y_test, y_pred)
 	print("Raw Accuracy:", acc2)
 
 	#get label ids in sorted
 	class_labels = sorted(label_id, key=label_id.get)
-	print (class_labels)
+	#print (class_labels)
 
-	if nb_classes == 2: 
-		p_labels= ['informative', 'non_informative']
-		class_ids = [class_labels.index(p_labels[0]), class_labels.index(p_labels[1])]
-	else: 	
-		p_labels= ['Affected individuals', 'Donations and volunteering', 'Infrastructure and utilities', \
-                        'Not related or irrelevant', 'Other Useful Information', 'Sympathy and support']
-		class_ids    = [class_labels.index(p_labels[0]), class_labels.index(p_labels[1]), class_labels.index(p_labels[2]),\
-				class_labels.index(p_labels[3]), class_labels.index(p_labels[4]), class_labels.index(p_labels[5])]
+	print (metrics.classification_report(y_test, y_pred, target_names=class_labels, digits=4) )
 
-	print (class_ids)
-
-	print (metrics.classification_report(y_test, y_pred, labels=class_ids, target_names=p_labels, digits=4) )
-	#print (metrics.classification_report(y_test, y_pred, labels=class_ids, digits=3) )
-
-
-	print ("Confusion Matrix:\n", metrics.confusion_matrix(y_test, y_pred, labels=class_ids))
+	print ("Confusion Matrix:\n", metrics.confusion_matrix(y_test, y_pred, labels=range(0, len(class_labels))))
 
 	if nb_classes == 2:
 		_p, _r, _f, sup = metrics.precision_recall_fscore_support(y_test, y_pred, average='binary')
 		print (" pre: " + str (_p) + " rec: " + str (_r) + " f-score: " + str (_f))
            
 	else:
-
 		mic_p, mic_r, mic_f, sup = metrics.precision_recall_fscore_support(y_test, y_pred, average='micro')
 		mac_p, mac_r, mac_f, sup = metrics.precision_recall_fscore_support(y_test, y_pred, average='macro')
 		print (" micro pre: " + str (mic_p) + " rec: " + str (mic_r) + " f-score: " + str (mic_f))
 		print (" macro pre: " + str (mac_p) + " rec: " + str (mac_r) + " f-score: " + str (mac_f))
-	# save the architecture finally in json format
+
+        # save the architecture finally in json format
         json_string = model.to_json()
         open(model_name + ".json", 'w').write(json_string)
 

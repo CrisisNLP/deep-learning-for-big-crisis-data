@@ -107,7 +107,7 @@ def load_and_numberize_data(path="../data/", nb_words=None, maxlen=None, seed=11
         y_test  = remap_labels(y_test,  merge_labels=merge_labels)
         y_dev   = remap_labels(y_dev,   merge_labels=merge_labels)
 
-    label_list = list (set(y_train))
+    label_list = sorted( list (set(y_train)))
 
     label_map  = {}
     for lab_id, lab in enumerate (label_list):

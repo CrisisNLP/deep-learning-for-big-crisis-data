@@ -1,7 +1,7 @@
-CNN_SCR="../dnn_scripts/cnn_crisi.py"
+CNN_SCR="./dnn_scripts/cnn_crisis.py"
 MODEL_DIR="saved_models/"
 
-data=./data/4nn/
+data=./data/nn_data/
 
 #log=./mix-in-domain-embGG.log
 log=./log.cnn
@@ -10,15 +10,15 @@ log=./log.cnn
 mkdir -p $MODEL_DIR
 
 ###<- Set general DNN settings ->
-dr_ratios=(0.2 0.4 0.5) #dropout_ratio
+dr_ratios=(0.2) #dropout_ratio
 mb_sizes=(128) #minibatch-size
 
 ### <- set CNN settings ->
 nb_filters=(150) #no of feature map
-filt_lengths=(2 3)
-pool_lengths=(3 4) 
+filt_lengths=(2)
+pool_lengths=(3) 
 
-vocab_sizes=(85 90) # how many words in percentage for vocabulary
+vocab_sizes=(90) # how many words in percentage for vocabulary
 
 ### <- embedding file ->
 init_type="pretrained"
@@ -34,7 +34,7 @@ for ratio in ${dr_ratios[@]}; do
 							echo "----------------------------------------------------------------------" >> $log;
 
 							THEANO_FLAGS=mode=FAST_RUN,device=gpu,floatX=float32 python $CNN_SCR \
-							--data-dir=$data/ --model-dir=$MODEL_DIR -i $init_type -f $emb_file\
+							--data-dir=$data --model-dir=$MODEL_DIR -i $init_type -f $emb_file\
 							--vocabulary-size=$vocab --dropout_ratio=$ratio --minibatch-size=$mb\
 							--nb_filter=$nb_filter --filter_length=$filt_len --pool_length=$pool_len\
 							--vocabulary-size=$vocab  >>$log
