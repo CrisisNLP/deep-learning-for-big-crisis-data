@@ -3,6 +3,10 @@ This repository will host Python implementation of a number of deep neural netwo
 for the classification of crisis-related data on Twitter.
 
 1. Requirementes:
+        
+        python 2.7
+        numpy, sklearn
+        keras, tensorflow or theano
 
 2. Dataset and Pre-process
 	A sample of tweet data (data/sample.csv) is a .csv format with three columns  
@@ -28,3 +32,5 @@ for the classification of crisis-related data on Twitter.
 	- bash run_cnn.sh to train a model with different parameters.
 	
 	See the results and training process in .log file
+
+        Note that: if you do not have a GPU, you can run on CPU by change the theano flag to THEANO_FLAGS=mode=FAST_RUN,device=cpu,floatX=float32
