@@ -19,13 +19,16 @@ for the classification of crisis-related data on Twitter.
 	
         - python data_helpers/split_data.py data/sample_prccd.csv
 	  
-3. Training a neural net model 
+3. Training a neural net model
 
 	To train a classifier we create a folder containing links to train, test and dev part (data/nn_data)
+
 	Folder embeddings/ includes word vector file, we provide our pre-trained crisis word vectors, we also can use Google word embedding here
+
 	Folder dnn_scrips/ contains all neural nets models: CNN, RNN_LSTM, MLP…
 
 	- bash run_cnn.sh to train a model with different parameters.
 
 	See the results and training process in .log file
+
         Note that: if you do not have a GPU, you can run on CPU by change the theano flag to THEANO_FLAGS=mode=FAST_RUN,device=cpu,floatX=float32
