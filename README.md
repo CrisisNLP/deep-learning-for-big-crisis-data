@@ -5,7 +5,7 @@ for the classification of crisis-related data on Twitter.
 1. Requirementes:
         
         python 2.7
-        numpy, sklearn
+        numpy, scikit-learn
         keras, tensorflow or theano backend
 
 2. Dataset and Pre-process
@@ -21,14 +21,11 @@ for the classification of crisis-related data on Twitter.
 	  
 3. Training a neural net model 
 
-	To train a classifier we create a folder containing links to train, test and dev part (data/nn_data) 
-	
+	To train a classifier we create a folder containing links to train, test and dev part (data/nn_data)
 	Folder embeddings/ includes word vector file, we provide our pre-trained crisis word vectors, we also can use Google word embedding here
-	
 	Folder dnn_scrips/ contains all neural nets models: CNN, RNN_LSTM, MLP…
-	
-	- bash run_cnn.sh to train a model with different parameters.
-	
-	See the results and training process in .log file
 
+	- bash run_cnn.sh to train a model with different parameters.
+
+	See the results and training process in .log file
         Note that: if you do not have a GPU, you can run on CPU by change the theano flag to THEANO_FLAGS=mode=FAST_RUN,device=cpu,floatX=float32
