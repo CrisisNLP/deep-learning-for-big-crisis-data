@@ -6,11 +6,16 @@ for the classification of crisis-related data on Twitter.
 
 2. Dataset and Pre-process
 	A sample of tweet data (data/sample.csv) is a .csv format with three columns  
-	First, we need to pre-process tweets data: remove urls, special characters, lowercasing…
+	
+        First, we need to pre-process tweets data: remove urls, special characters, lowercasing…
+    
     	- python data_helpers/preprocess.py data/sample.csv
-    Split pre-processed data (data/sample_prccd.csv) into train, test and dev part.
-		- python data_helpers/split_data.py data/sample_prccd.csv
-	To train a classifier we create a folder containing links to train, test, dev part.
+        
+        Split pre-processed data (data/sample_prccd.csv) into train, test and dev part.
+	
+        - python data_helpers/split_data.py data/sample_prccd.csv
+	
+        To train a classifier we create a folder containing links to train, test, dev part.
 	  
 3. Training a neural net model 
 	- To train a classifier we create a folder containing links to train, test and dev part (data/4nn_data) 
