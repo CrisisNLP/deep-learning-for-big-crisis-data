@@ -18,9 +18,8 @@ for the classification of crisis-related data on Twitter.
         To train a classifier we create a folder containing links to train, test, dev part.
 	  
 3. Training a neural net model 
-	- To train a classifier we create a folder containing links to train, test and dev part (data/4nn_data) 
-    - Folder embeddings/ includes word vector file, we provide our pre-trained crisis word vector
-      we also can use Google word embedding here
-	- Folder dnn_scrips/ contains all neural nets models: CNN, RNN_LSTM, MLP…
+	To train a classifier we create a folder containing links to train, test and dev part (data/4nn_data) 
+	Folder embeddings/ includes word vector file, we provide our pre-trained crisis word vectors, we also can use Google word embedding here
+	Folder dnn_scrips/ contains all neural nets models: CNN, RNN_LSTM, MLP…
 	- bash run_cnn.sh to train a model with different parameters.
-	- See the results and training process in .log file
+	See the results and training process in .log file
